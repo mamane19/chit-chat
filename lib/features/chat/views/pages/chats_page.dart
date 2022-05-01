@@ -39,12 +39,11 @@ class ChatsPage extends StatelessWidget {
       ),
       body: CustomScrollView(
         slivers: [
-           SliverAppBar(
+          SliverAppBar(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             title: const Text('Chats'),
             pinned: true,
             titleTextStyle: Theme.of(context).textTheme.titleLarge,
-            expandedHeight: ,
           ),
           BlocBuilder<ChatsCubit, ChatsState>(
             builder: (context, state) {
