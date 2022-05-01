@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "428227397808",
+    "project_id": "xave-8b4d7",
+    "storage_bucket": "xave-8b4d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428227397808:android:c956c2e1e39af0df499375",
+        "android_client_info": {
+          "package_name": "tech.shinigami.xave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428227397808-94ah5v5vm2crf1fn1r32r4if61bnnsp1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tech.shinigami.xave",
+            "certificate_hash": "2f4c3568e2c83f53c0992b87f16997053af7f72d"
+          }
+        },
+        {
+          "client_id": "428227397808-24v0hugm4jqldi5e00a1fk1vunvtsg1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4dYk0yDY2bzEZyBqBosR4VRdu5dnbYdc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428227397808-24v0hugm4jqldi5e00a1fk1vunvtsg1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
