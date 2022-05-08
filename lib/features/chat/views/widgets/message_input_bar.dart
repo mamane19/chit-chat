@@ -34,12 +34,12 @@ class _MessageInputBarState extends State<MessageInputBar> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(.1),
-        boxShadow: const [
+        color: Theme.of(context).cardColor,
+        boxShadow: [
           BoxShadow(
-            color: Colors.purple,
-            blurRadius: 3,
-            offset: Offset(1, 0),
+            color: Theme.of(context).cardColor,
+            blurRadius: 24,
+            offset: const Offset(0, -1),
           )
         ],
       ),

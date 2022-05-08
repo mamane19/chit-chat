@@ -34,9 +34,11 @@ class ConversationPage extends StatelessWidget {
               bloc: context.read<ChatsCubit>(),
               builder: (context, state) {
                 var currentChat = conversation;
-                if (state is ChatsLoaded) {
+
+                if (state is ChatsLoaded && state.chats.isNotEmpty) {
                   currentChat = state.chats.firstWhere(
                     (c) => c.uuid == conversation.uuid,
+                    orElse: () => conversation,
                   );
                 }
                 final messages = currentChat.messages;

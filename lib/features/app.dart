@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xave/core/cubit/brightness_cubit.dart';
 import 'package:xave/features/auth/auth.dart';
 import 'package:xave/features/auth/views/pages/authentication_page.dart';
 import 'package:xave/features/chat/logic/repository/chat_repository.dart';
@@ -29,7 +30,8 @@ class App extends StatelessWidget {
             repository: chatsRepo,
             loggedContact: null,
           ),
-        )
+        ),
+        BlocProvider(create: (context) => BrightnessCubit()),
       ],
       child: const _AppView(),
     );
@@ -41,27 +43,43 @@ class _AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {
-          final chatsCubit = context.read<ChatsCubit>();
-          if (state is AuthLoggedIn) {
-            chatsCubit
-              ..loggedContact = state.account
-              ..load();
-          }
-        },
-        builder: (context, state) {
-          if (state is AuthLoggedIn) {
-            return const ChatsPage();
-          } else if (state is AuthLoading) {
-            return const Scaffold(
-              body: Center(child: CircularProgressIndicator()),
-            );
-          }
-          return const AuthenticationPage();
-        },
-      ),
+    return BlocBuilder<BrightnessCubit, Brightness>(
+      builder: (context, state) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            brightness: state,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.red,
+              brightness: state,
+            ),
+          ),
+          home: Builder(
+            builder: (context) {
+              return BlocConsumer<AuthCubit, AuthState>(
+                listener: (context, state) {
+                  final chatsCubit = context.read<ChatsCubit>();
+                  if (state is AuthLoggedIn) {
+                    chatsCubit
+                      ..loggedContact = state.account
+                      ..load();
+                  }
+                },
+                builder: (context, state) {
+                  if (state is AuthLoggedIn) {
+                    return const ChatsPage();
+                  } else if (state is AuthLoading) {
+                    return const Scaffold(
+                      body: Center(child: CircularProgressIndicator()),
+                    );
+                  }
+                  return const AuthenticationPage();
+                },
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

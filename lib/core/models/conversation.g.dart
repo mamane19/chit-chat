@@ -57,10 +57,6 @@ class ConversationAdapter extends TypeAdapter<Conversation> {
 // **************************************************************************
 
 Conversation _$ConversationFromJson(Map<String, dynamic> json) {
-  print('-----');
-  print(json['starter']);
-  print('-----');
-
   return Conversation(
     starter: Contact.fromJson(json['starter'] as Map<String, dynamic>),
     messages: (json['messages'] as List<dynamic>)

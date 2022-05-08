@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "428227397808-gs3lma1713f6e3hm2ca73uvsgmkn494h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tech.shinigami.xave",
+            "certificate_hash": "2a49249cb3da2d0252bc3fd1d473dbd7e49c3862"
+          }
+        },
+        {
           "client_id": "428227397808-24v0hugm4jqldi5e00a1fk1vunvtsg1r.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -37,6 +45,13 @@
             {
               "client_id": "428227397808-24v0hugm4jqldi5e00a1fk1vunvtsg1r.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "428227397808-1de7oj78uscv4e5ge37aptru285b169j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "t"
+              }
             }
           ]
         }

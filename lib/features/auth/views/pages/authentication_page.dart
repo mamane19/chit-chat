@@ -1,3 +1,4 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xave/features/auth/logic/states/auth_cubit.dart';
@@ -47,21 +48,21 @@ class AuthenticationPage extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Sign In To Get Started'),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    TextButton.icon(
-                      onPressed: context.read<AuthCubit>().login,
-                      label: const Text('Sign In With Google'),
-                      icon: const Icon(Icons.chair),
-                    ),
-                  ],
-                ),
+              Text(
+                'Chit Chat',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Text(
+                'A unique chatting experience',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton.icon(
+                onPressed: context.read<AuthCubit>().login,
+                label: const Text('Sign In With Google'),
+                icon: const Icon(EvaIcons.google),
               ),
             ],
           ),

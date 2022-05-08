@@ -1,6 +1,7 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:xave/core/models/contact.dart';
 import 'package:xave/core/models/conversation.dart';
 import 'package:xave/core/models/message.dart';
@@ -20,7 +21,11 @@ class ChatsCubit extends Cubit<ChatsState> {
     final chats = <Conversation>[];
     _repository.chatsQueue.listen((event) {
       if (s is ChatsLoaded) {
-        chats.addAll((s as ChatsLoaded).chats);
+        for (final e in (s as ChatsLoaded).chats) {
+          if (!chats.contains(e)) {
+            chats.add(e);
+          }
+        }
         if (event != null && !chats.contains(event)) {
           chats.add(event);
           s = ChatsLoaded(chats: chats);
@@ -73,7 +78,7 @@ class ChatsCubit extends Cubit<ChatsState> {
         }
       }
     } catch (e, s) {
-      debugPrint('$e\n$s');
+      log('$e\n$s');
       emit(ChatsFailure(message: '$e'));
     }
   }
@@ -99,7 +104,7 @@ class ChatsCubit extends Cubit<ChatsState> {
 
       emit(ChatsLoaded(chats: chats));
     } catch (e, s) {
-      debugPrint('$e\n$s');
+      log('$e\n$s');
       emit(ChatsFailure(message: '$e'));
     }
   }
@@ -119,7 +124,7 @@ class ChatsCubit extends Cubit<ChatsState> {
         emit(ChatsLoaded(chats: chats));
       }
     } catch (e, s) {
-      debugPrint('$e\n$s');
+      log('$e\n$s');
       emit(ChatsFailure(message: '$e'));
     }
   }
